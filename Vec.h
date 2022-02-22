@@ -2,15 +2,11 @@
 #define VEC_H
 
 #include <Arduino.h>
-#include <SD.h>
-#include <clipper.hpp>
 #include <vector>
 #include <array>
 #include <numeric>
 #include <algorithm>
 #include <unordered_set>
-
-
 
 namespace Vec
 {
@@ -64,6 +60,12 @@ namespace Vec
         
     }
 
+    /*
+    https://stackoverflow.com/questions/838384/reorder-vector-using-a-vector-of-indices
+    Reorders vector v based on an order vector. a variant which does destroy the reorder vector (filling it with -1's). 
+    Supposedly, it is really fast.
+    Inputs: iterators for the order vector, and an iterator for the value vector.
+    */
     template< typename order_iterator, typename value_iterator >
     void reorder_destructive( order_iterator order_begin, order_iterator order_end, value_iterator v )  {
         typedef typename std::iterator_traits< value_iterator >::value_type value_t;
@@ -84,6 +86,7 @@ namespace Vec
             v[s] = temp;
         }
     }
+
     /*
     https://stackoverflow.com/questions/39379411/c-remove-elements-that-are-in-one-vector-from-another
     Removes instances from vector a which are present in both vector a and b
@@ -123,7 +126,7 @@ namespace Vec
 
         return v.size();
     }
-    
+
 }; //namespace Vec
 
 
