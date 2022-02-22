@@ -7,6 +7,7 @@
 #include <numeric>
 #include <algorithm>
 #include <unordered_set>
+#include <set>
 
 namespace Vec
 {
